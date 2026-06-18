@@ -1,4 +1,4 @@
-LeetCode 1344 - Angle Between Hands of a Clock
+ /* LeetCode 1344 - Angle Between Hands of a Clock
 
 Concept:
 Minute Hand:
@@ -17,3 +17,23 @@ answer = min(angle, 360 - angle)
 
 Time Complexity: O(1)
 Space Complexity: O(1)
+*/
+
+double angleClock(int hour, int minutes)
+{
+    if(hour == 12)
+        hour = 0;
+
+    double minuteAngle = minutes * 6;
+    double hourAngle = hour * 30 + minutes * 0.5;
+
+    double angle = hourAngle - minuteAngle;
+
+    if(angle < 0)
+        angle = -angle;
+
+    if(angle > 180)
+        angle = 360 - angle;
+
+    return angle;
+}
